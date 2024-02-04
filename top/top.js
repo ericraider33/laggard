@@ -1,20 +1,22 @@
+export const StateEnum =
+{
+    loading: 0,
+    login: 1,
+    noPatient: 2,
+    timer: 3
+};
+
 export class Top
 {
-    static StateEnum =
-    {
-        loading: 0,
-        login: 1,
-        noPatient: 2,
-        timer: 3
-    }
-
+    static StateEnum = StateEnum;
+    
     constructor()
     {
-        this.state = ko.observable(Top.StateEnum.loading);
-        this.isLoading = ko.computed(() => this.state() === Top.StateEnum.loading);
-        this.isLogin = ko.computed(() => this.state() === Top.StateEnum.login);
-        this.isNoPatient = ko.computed(() => this.state() === Top.StateEnum.noPatient);
-        this.isTimer = ko.computed(() => this.state() === Top.StateEnum.timer);
+        this.state = ko.observable(StateEnum.loading);
+        this.isLoading = ko.computed(() => this.state() === StateEnum.loading);
+        this.isLogin = ko.computed(() => this.state() === StateEnum.login);
+        this.isNoPatient = ko.computed(() => this.state() === StateEnum.noPatient);
+        this.isTimer = ko.computed(() => this.state() === StateEnum.timer);
 
         this.patientDialogTitle = ko.observable();
         

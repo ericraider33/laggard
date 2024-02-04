@@ -1,4 +1,4 @@
-html.editor
+html
 {
     margin: 0;
     padding: 0;
@@ -11,6 +11,7 @@ body
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: inherit;
+    font-size: 14px;
 }
 
 label
@@ -57,4 +58,26 @@ div.timer-comment
 {
     width: 100%;
     min-height: 200px;
+}
+
+div.login
+{
+    background-color: #e5fbe5;
+    padding: 30px 80px;
+}
+
+div.login-area
+{
+    background-color: #f7f7f7;
+    border: 2px solid #777;
+    padding: 10px;
+    border-radius: 10px 10px;
+}
+
+button.login-submit
+{
+    padding: 15px; 
+    font-size: 18px;
+    color: white;
+    background-color: #337ab7;
 }

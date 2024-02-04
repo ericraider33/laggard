@@ -10,7 +10,8 @@
             No patient information available
         </div>
         <div data-bind="visible: isTimer" style="display: none">
-            Timer
+            <div data-bind="component: { name: 'l-timer', params: components.timer }">                
+            </div>
         </div>
     </body>
     <script src="./tko-4.0.0-alpha8-knockout.min.js" crossorigin="anonymous"></script>

@@ -1,3 +1,5 @@
+import { Timer } from './timer/timer.js';
+
 export class Main
 {
     static StateEnum = 
@@ -15,5 +17,9 @@ export class Main
         this.isLogin = ko.computed(() => this.state() === Main.StateEnum.login);
         this.isNoPatient = ko.computed(() => this.state() === Main.StateEnum.noPatient);
         this.isTimer = ko.computed(() => this.state() === Main.StateEnum.timer);
+        
+        this.components = {
+            timer: { main: this }  
+        };
     }
 }

@@ -1,0 +1,60 @@
+html.editor
+{
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: inherit;
+}
+
+label
+{
+    font-weight: bold;
+}
+
+div.timer-header
+{
+    background-color: #9494b7;
+    color: floralwhite;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    padding: 5px 0;
+    text-align: center;
+}
+
+div.timer-duration-area
+{
+    padding: 5px 0;
+}
+
+div.timer-duration
+{
+    border: #aaa solid 2px;
+    padding: 7px 3px;
+    margin: 0 7px;
+    font-size: 24px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    color: white;
+    background-color: #323639;
+    display: inline-block;
+}
+
+div.timer-comment
+{
+    background-color: #f9f2ec;
+    border: 2px solid #aaa; 
+    padding: 10px;
+    border-radius: 10px 10px;
+}
+
+#timer-comment
+{
+    width: 100%;
+    min-height: 200px;
+}

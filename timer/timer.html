@@ -1,3 +1,21 @@
-<div>
-    My Timer Goes Here
+<div style="background: #ecf3f9">
+    <div class="timer-header">
+        {{ top.patientDialogTitle }}
+    </div>
+    <div class="timer-duration-area" style="display: flex">
+        <div style="flex-grow: 1"></div>
+        <div class="timer-duration" style="display: inline-block">{{ durationText }}</div>
+        <button type="button" data-bind="visible: !isTimerRunning(), click: startTimer">
+            {{ canResume() ? 'Resume Timer' : 'Start Timer' }}
+        </button>
+        <button type="button" data-bind="visible: isTimerRunning, click: stopTimer" style="margin: 0 7px;">
+            Pause Timer
+        </button>
+        <div style="flex-grow: 1"></div>
+    </div>
+    <div class="timer-comment">
+        <label for="timer-comment">Clinical Comments:</label>
+        <textarea id="timer-comment" data-bind="textInput: comment">
+        </textarea>
+    </div>
 </div>

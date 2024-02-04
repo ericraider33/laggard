@@ -8,6 +8,9 @@ ko
     .then(() =>
     {
         console.log('Init Complete')
+        
+        main.top.patientDialogTitle('Rodriguez, Roy (2/3/1965) ID: HRLFK0S');
+        
         main.top.state(Top.StateEnum.timer);
     });
 

@@ -15,6 +15,8 @@ export class Top
         this.isLogin = ko.computed(() => this.state() === Top.StateEnum.login);
         this.isNoPatient = ko.computed(() => this.state() === Top.StateEnum.noPatient);
         this.isTimer = ko.computed(() => this.state() === Top.StateEnum.timer);
+
+        this.patientDialogTitle = ko.observable();
         
         this.components = 
         {

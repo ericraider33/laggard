@@ -1,14 +1,13 @@
-let template = await (await fetch('./timer/timer.html')).text();
+let template = await loadHtml('/timer/timer.html');
+import { top } from "/top/top.js";
 
 export class Timer extends ko.Component
 {
-    #main;
-    
-    constructor({ main })
+    constructor()
     {
         super();
-        
-        this.#main = main;
+        this.top = top;
+        this.top.components.timer(this);
     }
 
     static get elementName() { return 'l-timer' };

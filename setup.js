@@ -1,4 +1,6 @@
-import { Main } from './main.js';
+import { TkoUtil } from "/util/tko-util.js";
+import { Main } from '/main.js';
+import { Top } from "/top/top.js";
 
 let main = new Main();
 ko
@@ -6,7 +8,7 @@ ko
     .then(() =>
     {
         console.log('Init Complete')
-        main.state(Main.StateEnum.timer);
+        main.top.state(Top.StateEnum.timer);
     });
 
 console.log('Setup Complete');

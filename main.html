@@ -1,16 +1,18 @@
 <html>
     <body>
-        <div data-bind="visible: isLoading">
-            Loading ...
+        <div data-bind="visible: top.isLoading">
+            Loading ChronicCareIQ timer...
         </div>
-        <div data-bind="visible: isLogin" style="display: none">
-            Login
+        <div data-bind="visible: top.isLogin" style="display: none">
+            <div data-bind="component: { name: 'l-login' }">
+            </div>
         </div>
-        <div data-bind="visible: isNoPatient" style="display: none">
-            No patient information available
+        <div data-bind="visible: top.isNoPatient" style="display: none">
+            <div data-bind="component: { name: 'l-no-patient' }">
+            </div>
         </div>
-        <div data-bind="visible: isTimer" style="display: none">
-            <div data-bind="component: { name: 'l-timer', params: components.timer }">                
+        <div data-bind="visible: top.isTimer" style="display: none">
+            <div data-bind="component: { name: 'l-timer' }">                
             </div>
         </div>
     </body>

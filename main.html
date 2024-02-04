@@ -1,6 +1,18 @@
 <html>
     <body>
-        <h1>Test</h1>
+        <div data-bind="visible: isLoading">
+            Loading ...
+        </div>
+        <div data-bind="visible: isLogin" style="display: none">
+            Login
+        </div>
+        <div data-bind="visible: isNoPatient" style="display: none">
+            No patient information available
+        </div>
+        <div data-bind="visible: isTimer" style="display: none">
+            Timer
+        </div>
     </body>
-    <script src="main.js"></script>
+    <script src="./tko-4.0.0-alpha8-knockout.min.js" crossorigin="anonymous"></script>
+    <script type="module"  src="./setup.js"></script>
 </html>

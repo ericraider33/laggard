@@ -10,6 +10,8 @@ Test browser plug-in
 
 ## Useful Links
 - https://developer.chrome.com/docs/extensions/get-started
-- https://www.markdownguide.org/basic-syntax/
+- https://javascript.plainenglish.io/fetch-data-in-chrome-extension-v3-2b73719ffc0e
+- - https://www.markdownguide.org/basic-syntax/
+
 
 

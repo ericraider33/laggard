@@ -55,6 +55,7 @@ export class Login extends ko.Component
 
     #onError(message)
     {
+        console.log("Login error: " + message.status);
         console.log(message);
     }
 }

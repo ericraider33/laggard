@@ -72,8 +72,8 @@ export class NetUtil
         }, response => 
         {
             if (response.error)
-                request.error(response.error);
-            else
+                request.error(response);
+            else 
                 request.success(response);
         });
     }

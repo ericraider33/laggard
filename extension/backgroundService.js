@@ -23,12 +23,17 @@ class BackgroundService
                 },
                 body: request.data,
             })
-            .then(res => {
-                return res.json();
-            })
-            .then(
-                res => senderResponse(res)
-            );
+            .then(res => 
+            {
+                if (res.ok)
+                    return res.json().then(obj => senderResponse({ success: obj }));
+
+                const contentType = res.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1)
+                    return res.json().then(obj => senderResponse({ error: obj, status: res.status }));
+                
+                return new Promise((resolve, reject) => resolve({ error: res.statusText, status: res.status }));
+            });
     }
 }
 

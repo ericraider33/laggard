@@ -1,4 +1,5 @@
 let template = await loadHtml('/login/login.html');
+import { StateEnum } from "/top/top.js";
 import { top } from "/top/top.js";
 import { asc } from "/util/asc.js";
 
@@ -31,32 +32,30 @@ export class Login extends ko.Component
         this.form.password('');
     }
     
-    async onSubmit()
+    onSubmit()
     {
-        let apiLoginResponse;
-        try 
-        {
-            const response = await fetch(asc.Net.url('/api/login/loginForm'), 
-            {
-                method: "POST",
-                mode: "no-cors",
-                cache: "no-cache",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(ko.toJS(this.form))
-            });
-            apiLoginResponse = await response.json();   
-        }
-        catch (err)
-        {
-            console.log('Login Failed');
-            console.log(err);
-            return;
-        }
-
-        console.log('Login successful');
-        console.log(apiLoginResponse);
+        asc.Net.ajaxPost({
+            url: '/api/login',
+            data: this.form,
+            success: x => this.#onLogin(x),
+            error: x => this.#onError(x)
+        })
         
-        this.top.state(this.top.StateEnum.timer);
+    }
+
+    /**
+     * @param {ApiLoginResponse} login - Tokens generated from a successful login 
+     */
+    #onLogin(login)
+    {
+        console.log(login);
+        
+        this.top.state(StateEnum.timer);
+    }
+
+    #onError(message)
+    {
+        console.log(message);
     }
 }
 Login.register(Login.elementName);

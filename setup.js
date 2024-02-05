@@ -14,8 +14,8 @@ ko
         
         main.top.patientDialogTitle('Rodriguez, Roy (2/3/1965) ID: HRLFK0S');
 
-//        main.top.state(Top.StateEnum.login);
-        main.top.state(Top.StateEnum.timer);
+        main.top.state(Top.StateEnum.login);
+//        main.top.state(Top.StateEnum.timer);
     });
 
 console.log('Setup Complete');

@@ -6,5 +6,9 @@
   "action": {
     "default_popup": "main.html",
     "default_icon": "favicon-32x32.png"
+  },
+  "host_permissions": ["https://*.chroniccareiq.com/*"],
+  "background": {
+    "service_worker": "extension/backgroundService.js"
   }
 }

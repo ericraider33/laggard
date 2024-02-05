@@ -11,7 +11,8 @@ Test browser plug-in
 ## Useful Links
 - https://developer.chrome.com/docs/extensions/get-started
 - https://javascript.plainenglish.io/fetch-data-in-chrome-extension-v3-2b73719ffc0e
-- - https://www.markdownguide.org/basic-syntax/
+- https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval
+- https://www.markdownguide.org/basic-syntax/
 
 
 

@@ -48,4 +48,65 @@ export class NetUtil
         Object.keys(queryParams).forEach(mapProperty);
         return result.toString();
     }
+
+    /**
+     * @param {String} request.url 
+     * @param {Object,String} request.data Object to post as either a JSON string or an object to be JSONified
+     * @param {function} request.success Callback method for response
+     * @param {function} request.error Callback method for error
+     */
+    static ajaxPost(request)
+    {
+        request = Object.assign(request, {
+            method: 'POST', 
+            url: this.url(request.url, request.queryParams), 
+            contentType: 'application/json'
+        });
+        
+        if (!(typeof request.data === 'string'))
+            request.data = ko.toJSON(request.data);
+        
+        chrome.runtime.sendMessage({ 
+            type: 'fetch', 
+            request: request
+        }, response => 
+        {
+            if (!response)
+                return;
+
+            if (response.error)
+                request.error(response.error);
+            else if (response.success)
+                request.success(response.success);
+        });
+    }
+
+    /**
+     * @param {String} request.url
+     * @param {Object,String} request.body Object to post as either a JSON string or an object to be JSONified
+     * @param {function} request.success Callback method for response
+     * @param {function} request.error Callback method for error
+     */
+    static ajaxGet(request)
+    {
+        request = Object.assign(request, {
+            method: 'GET',
+            url: this.url(request.url, request.queryParams),
+            contentType: 'application/json'
+        });
+
+        chrome.runtime.sendMessage({
+            type: 'fetch',
+            request: request
+        }, response =>
+        {
+            if (!response)
+                return;
+            
+            if (response.error)
+                request.error(response.error);
+            else if (response.success)
+                request.success(response.success);
+        });
+    }
 }

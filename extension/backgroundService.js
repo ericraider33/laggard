@@ -14,13 +14,15 @@ class BackgroundService
 
     #fetch(request, sender, senderResponse)
     {
+        let headers = {};
+        headers['Content-Type'] = request.contentType;
+        if (request.accessToken)
+            headers.Authorization = 'Bearer ' + request.accessToken;
+        
         fetch(request.url, 
         {
                 method: request.method,
-                headers: 
-                {
-                    'Content-Type': request.contentType,
-                },
+                headers: headers,
                 body: request.data,
             })
             .then(res => 
@@ -32,7 +34,9 @@ class BackgroundService
                 if (contentType && contentType.indexOf("application/json") !== -1)
                     return res.json().then(obj => senderResponse({ error: obj, status: res.status }));
                 
-                return new Promise((resolve, reject) => resolve({ error: res.statusText, status: res.status }));
+                return new Promise((resolve, reject) => 
+                    resolve(senderResponse({ error: res.statusText, status: res.status }))
+                );
             });
     }
 }

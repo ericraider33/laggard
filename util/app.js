@@ -1,7 +1,13 @@
 class App
 {
-    /** @type {string} fully qualified URL to server; must start with HTTPS or HTTP */
+    /** @type {String} fully qualified URL to server; must start with HTTPS or HTTP */
     baseUrl;
+
+    /** @type {String} current access token to authorize API access or null if unauthorized */
+    accessToken;
+    
+    refreshToken;
+    accessTokenExpiryUtc;
     
     constructor() 
     {
@@ -13,6 +19,23 @@ class App
     url(path)
     {
         return this.baseUrl + path;
+    }
+
+    /**
+     * @param {ApiLoginResponse} token
+     */
+    setLoginTokens(token)
+    {
+        this.accessToken = token.AccessToken;
+        this.refreshToken = token.RefreshToken;
+        this.accessTokenExpiryUtc = token.AccessTokenExpiryUtc;
+    }
+    
+    clearLoginTokens()
+    {
+        this.accessToken = null;
+        this.refreshToken = null;
+        this.accessTokenExpiryUtc = null;
     }
 }
 

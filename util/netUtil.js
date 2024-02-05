@@ -60,7 +60,8 @@ export class NetUtil
         request = Object.assign(request, {
             method: 'POST', 
             url: this.url(request.url, request.queryParams), 
-            contentType: 'application/json'
+            contentType: 'application/json',
+            accessToken: app.accessToken,
         });
         
         if (!(typeof request.data === 'string'))
@@ -73,8 +74,8 @@ export class NetUtil
         {
             if (response.error)
                 request.error(response);
-            else 
-                request.success(response);
+            else if (response.success)
+                request.success(response.success);
         });
     }
 
@@ -89,7 +90,8 @@ export class NetUtil
         request = Object.assign(request, {
             method: 'GET',
             url: this.url(request.url, request.queryParams),
-            contentType: 'application/json'
+            contentType: 'application/json',
+            accessToken: app.accessToken,
         });
 
         chrome.runtime.sendMessage({
@@ -97,11 +99,8 @@ export class NetUtil
             request: request
         }, response =>
         {
-            if (!response)
-                return;
-            
             if (response.error)
-                request.error(response.error);
+                request.error(response);
             else if (response.success)
                 request.success(response.success);
         });

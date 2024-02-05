@@ -48,8 +48,7 @@ export class Login extends ko.Component
      */
     #onLogin(login)
     {
-        console.log(login);
-        
+        asc.app.setLoginTokens(login);
         this.top.state(StateEnum.timer);
     }
 

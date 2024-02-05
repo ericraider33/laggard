@@ -1,6 +1,7 @@
 let template = await loadHtml('/timer/timer.html');
 import { StateEnum } from "/top/top.js";
 import { top } from "/top/top.js";
+import { asc } from "/util/asc.js";
 import { Duration } from "/timer/duration.js"
 
 export class Timer extends ko.Component
@@ -62,7 +63,39 @@ export class Timer extends ko.Component
     
     onSubmit()
     {
-        this.top.state(StateEnum.noPatient);
+        let data = { "comments": [{
+            "emrPatientId": "HRLFK0S",
+            "emrCommentId": crypto.randomUUID(),
+            "emrStaffId": "badmother1234",
+            "noteDateTimeUtc": new Date().toISOString(),
+            "noteText": this.comment(),
+            "offlineTime": this.durationText()
+        }]};
+        
+        asc.Net.ajaxPost({
+            url: '/api/account/comment',
+            data: data,
+            error: x => this.#onError(x),
+            success: x => 
+            {
+                if (x.Processed > 0)
+                {
+                    asc.app.clearLoginTokens();
+                    this.top.state(StateEnum.login);
+                    return;
+                }
+                
+                console.log('error');
+                console.log(x);
+            },
+        })
+        
     }
+    
+    #onError(x)
+    {
+        console.log('error');
+        console.log(x);
+    }    
 }
 Timer.register(Timer.elementName);

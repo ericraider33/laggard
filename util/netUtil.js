@@ -71,13 +71,10 @@ export class NetUtil
             request: request
         }, response => 
         {
-            if (!response)
-                return;
-
             if (response.error)
                 request.error(response.error);
-            else if (response.success)
-                request.success(response.success);
+            else
+                request.success(response);
         });
     }
 

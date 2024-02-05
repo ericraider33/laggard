@@ -4,29 +4,31 @@ class BackgroundService
     {
         switch (message.type)
         {
-            case 'fetch': this.#fetch(message.request, sender, senderResponse); break;
+            case 'fetch': 
+                this.#fetch(message.request, sender, senderResponse);
+                break;
         }
+        
+        return true;
     }
 
     #fetch(request, sender, senderResponse)
     {
-        senderResponse({ success: { hi: 'mom' } });
-        
-        // fetch(request.url, 
-        // {
-        //         method: request.method,
-        //         headers: 
-        //         {
-        //             'Content-Type': request.contentType,
-        //         },
-        //         body: request.data,
-        //     })
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(
-        //         res => senderResponse(res)
-        //     );
+        fetch(request.url, 
+        {
+                method: request.method,
+                headers: 
+                {
+                    'Content-Type': request.contentType,
+                },
+                body: request.data,
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(
+                res => senderResponse(res)
+            );
     }
 }
 

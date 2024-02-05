@@ -1,4 +1,5 @@
 let template = await loadHtml('/timer/timer.html');
+import { StateEnum } from "/top/top.js";
 import { top } from "/top/top.js";
 import { Duration } from "/timer/duration.js"
 
@@ -57,6 +58,11 @@ export class Timer extends ko.Component
             this.startTimer();
         else
             this.stopTimer();
+    }
+    
+    onSubmit()
+    {
+        this.top.state(StateEnum.noPatient);
     }
 }
 Timer.register(Timer.elementName);

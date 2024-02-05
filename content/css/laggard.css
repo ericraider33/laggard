@@ -74,7 +74,7 @@ div.login-area
     border-radius: 10px 10px;
 }
 
-button.login-submit
+button.login-submit, button.timer-submit
 {
     padding: 15px; 
     font-size: 18px;

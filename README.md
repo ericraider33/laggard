@@ -12,7 +12,10 @@ Test browser plug-in
 - https://developer.chrome.com/docs/extensions/get-started
 - https://javascript.plainenglish.io/fetch-data-in-chrome-extension-v3-2b73719ffc0e
 - https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval
+- https://tailwindcss.com/
+- https://vitejs.dev/
 - https://www.markdownguide.org/basic-syntax/
+
 
 
 
